@@ -2,7 +2,8 @@
 // Variables
 height = 5;
 outer = 6;
-rows = 1;
+rows = 10;
+cols = 5;
 
 module make_nut(height,outer) {
     // Constant
@@ -23,22 +24,14 @@ module make_nut(height,outer) {
      
 }
 
-sq = (rows%2 == 0) ? rows/2 : (rows-1)/2;
+color([0,0,0]) translate([0,0,-2.1]) cube([220,220,1]);
 
-for (i=[1,rows]) {
-    for (j=[1:rows]) {
-        x= (i%2 == 0) ? (i-1)*2*outer : (i-1)*3*outer;
-        y= (j%2 == 0) ? (j-1)*2*outer : (j-1)*3*outer;
+for (i=[1:rows]) {
+    r = (i%2 == 0) ? cols-1 : cols;
+    for (j=[1:r]) {
+        x = (i*1.9)*outer;
+        y = (i%2 == 0) ? ((j*2)*(outer+2/3))+outer : ((j*2)*(outer+2/3));
         translate([x,y,0])
         make_nut(height, outer);    
     }
 }
-
-// for (i=[-sq:sq]) {
-//    for (j=[-sq:sq]) {
-//        x= (i%2 == 1) ? i*2*outer : i*2*outer;
-//        y= (j%2 == 1) ? j*2*outer : j*2*outer;
-//        translate([x,y,0])
-//        make_nut(height, outer);
-//    }
-// }
