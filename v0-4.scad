@@ -2,7 +2,7 @@
 // Variables
 height = 5;
 outer = 6;
-rows = 10;
+rows = 11;
 cols = 5;
 
 module make_nut(height,outer) {
@@ -24,7 +24,7 @@ module make_nut(height,outer) {
      
 }
 
-color([0,0,0]) translate([0,0,-2.1]) cube([220,220,1]);
+// color([0,0,0]) translate([0,0,-2.1]) cube([220,220,1]);
 
 for (i=[1:rows]) {
     r = (i%2 == 0) ? cols-1 : cols;
